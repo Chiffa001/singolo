@@ -182,30 +182,128 @@ a {
 .slider__phones {
   display: flex;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
 }
 
 .slider__phone--horizontal {
   height: 240px;
-  width: 483px; 
+  width: 483px;
 
   background: transparent url("./assets/images/phone-horizontal.png") no-repeat;
 }
 
 .slider__phone--vertical {
   width: 240px;
-  height: 483px;  
+  height: 483px;
 
   margin-right: 73px;
 
   background: transparent url("./assets/images/phone-vertical.png") no-repeat;
 }
 
-/* .slider__phone--horizontal {
-  margin-bottom: 60px;
-} */
+/* services */
+.services {
+  padding: 60px 0;
+  border-bottom: 8px solid #ffffff;
 
-/* .slider__phone--horizontal {
-  transform: rotate(90deg);
-} */
+  background-color: #f2f2f2;
+}
 
+.services__title {
+  font-weight: 900;
+  font-size: 30px;
+  color: var(--blue-dark);
+  letter-spacing: -0.2px;
+}
+
+.services__intro {
+  margin-top: 18px;
+
+  font-weight: 300;
+  font-size: 18px;
+  color: var(--blue-light);
+  line-height: 30px;
+  text-align: justify;
+}
+
+.services__list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+
+  padding-top: 12px;  
+}
+
+/* service */
+
+.service {
+  flex: 0 0 300px;
+
+  height: 90px;
+  overflow: hidden;
+
+  margin-top: 33px;
+  padding-left: 80px;
+  position: relative;    
+}
+
+.service::before {
+  content: "";
+
+  width: 59px;
+  height: 59px;
+  border: 2px solid var(--blue-dark);
+  border-radius: 50%;
+
+  background: center center no-repeat;
+
+  position: absolute;
+  top: 1px;
+  left: 0;
+}
+
+.service--pen::before {
+  background-image: url("./assets/images/pen.png");
+}
+
+.service--bulb::before {
+  background-image: url("./assets/images/bulb.png");
+}
+
+.service--heart::before {
+  background-image: url("./assets/images/heart.png");
+}
+
+.service--phone::before {
+  background-image: url("./assets/images/phone.png");
+}
+
+.service--bubble::before {
+  background-image: url("./assets/images/bubble.png");
+}
+
+.service--star::before {
+  background-image: url("./assets/images/star.png");
+}
+
+.service__title {
+  margin-bottom: 10px;
+
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--blue-dark);
+  letter-spacing: -0.2px;
+  line-height: 17.8px;
+  /* text-indent: 1px; */
+}
+
+.service__description {
+  width: 220px;
+
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--blue-light);
+  letter-spacing: -0.1px;
+  line-height: 21.5px;
+  text-align: justify;
+}
