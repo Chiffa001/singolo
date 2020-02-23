@@ -294,7 +294,6 @@ a {
   color: var(--blue-dark);
   letter-spacing: -0.2px;
   line-height: 17.8px;
-  /* text-indent: 1px; */
 }
 
 .service__description {
