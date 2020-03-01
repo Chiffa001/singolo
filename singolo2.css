@@ -176,13 +176,42 @@ a {
   margin-top: 44px;
 }
 
+.people__list {
+  flex-wrap: nowrap;
+}
+
 .people__item {
   flex: 0 0 300px;
+}
+
+.person__name {
+  margin-top: 15px;
+
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--blue-dark);
+  line-height: 17.86px;
+  letter-spacing: -0.15px;
+  white-space: nowrap;
+}
+
+.person__description {
+  margin-top: 10px;
+
+  font-size: 12px;
+  color: var(--blue-light);
+  line-height: 21.56px;
 }
 
 .socials {
   display: flex;
   flex-flow: row wrap;
+
+  margin-top: 24px;
+}
+
+.socials__item {
+  margin-right: 8px;
 }
 
 .socials__link:hover {
