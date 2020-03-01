@@ -68,7 +68,7 @@ a {
 
 .container {
   display: flex;
-  align-items: center;
+  flex-flow: row wrap;
   justify-content: space-between;
 }
 
@@ -78,4 +78,48 @@ a {
   width: 1px;
   height: 1px;
   margin: -1px;
+}
+
+/* Portfolio */
+.portfolio {
+  background-color: var(--background-blue);
+}
+
+.portfolio__title {
+  color: var(--blue-dark);
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.portfolio__intro {
+  color: var(--blue-dark);
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+}
+
+.filter__item {
+  font-size: 12px;
+  color: #ffffff;
+}
+
+.filter__btn {
+  background-color: transparent;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  font: inherit;
+  color: inherit;
+}
+
+.portfolio__images {
+  max-height: 605px;
+  overflow: hidden;
+}
+
+.portfolio__image {
+  margin-bottom: 20px;
 }
