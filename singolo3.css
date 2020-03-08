@@ -236,5 +236,38 @@ a {
   background: url("./assets/images/singolo3/mail.png") no-repeat;
 }
 
+/* footer */
 
+.main-footer {
+  background-color: #2d303a;
+}
 
+.main-footer__copyright {
+  margin: 30px 0 32px 2px;
+
+  color: #666d89;
+  letter-spacing: -0.1px;
+  font-size: 12px;
+}
+
+.main-footer__socials {
+  margin-top: 22px;
+}
+
+/* socials */
+.socials {
+  display: flex;
+  flex-flow: row wrap;  
+}
+
+.socials__item {
+  margin-right: 8px;
+}
+
+.socials__item:last-child {
+  margin-right: 0;
+}
+
+.socials__link:hover {
+  filter: brightness(.6);
+}
