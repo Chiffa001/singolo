@@ -168,6 +168,15 @@ a {
   height: 200px;
 }
 
+.feedback__form .feedback__btn {
+  width: 200px;
+}
+
+.feedback__btn:hover {
+  cursor: pointer;
+  background-color: #c9524c;
+}
+
 /* contact info */
 .contact-info {
   flex: 0 0 300px;
@@ -188,7 +197,6 @@ a {
   font-size: 12px;
   line-height: 22px;
   letter-spacing: 0.14px;
-  /* word-spacing: -2px; */
   text-align: justify;
 }
 
