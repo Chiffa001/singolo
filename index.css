@@ -98,7 +98,7 @@ a {
 
 .title,
 .intro {
-  margin-left: 1px;
+  margin-left: -1px;
 }
 
 .title {
@@ -240,34 +240,17 @@ a {
 
 /* services */
 .services {
-  padding: 60px 0;
+  padding: 60px 0 61.5px 0;
   border-color: #ffffff;
 
   background-color: #f2f2f2;
 }
 
-/* .services__title {
-  font-weight: 900;
-  font-size: 30px;
-  color: var(--blue-dark);
-  letter-spacing: -0.2px;
-} */
-
 .services__intro {
-  /* margin-top: 18px; */
-
-  /* font-weight: 300;
-  font-size: 18px;
-  color: var(--blue-light);
-  line-height: 30px; */
   text-align: justify;
 }
 
 .services__list {
-  /* display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between; */
-
   padding-top: 12px;
 }
 
@@ -346,7 +329,7 @@ a {
 
 /* Portfolio */
 .portfolio {
-  padding: 60px 0 63px 0;
+  padding: 60px 0 62px 0;
   border-bottom-color: #323746;
 
   background-color: var(--background-blue);
@@ -364,7 +347,7 @@ a {
 }
 
 .filter__item {
-  margin-right: 10px;
+  margin-right: 9px;
 }
 
 .filter__btn {
@@ -423,6 +406,10 @@ a {
 .person__name {
   margin-top: 15px;
 
+  height: 18px;
+  width: 300px;
+  overflow: hidden;
+
   font-size: 18px;
   font-weight: 900;
   color: var(--blue-dark);
@@ -463,7 +450,7 @@ a {
 
 /* feedback */
 .feedback {
-  padding: 60px 0 47px 0;
+  padding: 60px 0 9px 0;
 
   background-color: var(--orange-light);
 
@@ -499,6 +486,10 @@ a {
 
   background-color: var(--orange-dark);
   color: #f48c8f;
+}
+
+.feedback__form .feedback__btn {
+  margin-bottom: 0;
 }
 
 .feedback__form input::placeholder,
