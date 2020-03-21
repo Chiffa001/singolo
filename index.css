@@ -54,6 +54,11 @@
   font-family: "Lato", sans-serif;
 }
 
+body,
+html {
+  scroll-behavior: smooth;
+}
+
 ul,
 ol {
   list-style: none;
@@ -91,7 +96,6 @@ a {
 
 /* General */
 .section {
-  /* padding: 60px 0 47px 0; */
   border-bottom-width: 6px;
   border-bottom-style: solid;
 }
@@ -122,6 +126,11 @@ a {
 .main-header {
   display: flex;
   flex-direction: column;
+
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 
   border-bottom: 6px solid #323746;
   text-transform: uppercase;
