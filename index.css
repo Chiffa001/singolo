@@ -227,15 +227,23 @@ a {
 .arrow-btn {
   height: 27px;
   width: 16px;
-
-  background: transparent url("./assets/images/arrow.png");
+  
+  transform: rotate(180deg);
   transition: 0.3s ease;
 
   border: none;
 }
 
+.slide-1 .arrow-btn {
+  background: transparent url("./assets/images/arrow-right-red.svg");
+}
+
+.slide-2 .arrow-btn {
+  background: transparent url("./assets/images/arrow-right-blue.svg");
+}
+
 .arrow-btn--right {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
 }
 
 .arrow-btn:hover {
