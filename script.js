@@ -39,7 +39,7 @@ function getSizeBlocks(nameClass) {
   if (sections.length === 0) throw new Error(`element ${nameClass} not found`);
   const sizeBlocks = [];
   for (const iterator of sections) {
-    sizeBlocks.push(iterator.scrollHeight);
+    sizeBlocks.push(iterator.offsetHeight);
   }
   return sizeBlocks;
 }
@@ -182,15 +182,21 @@ function submitForm(e) {
 
 // slider
 
+const sliderBlock = document.querySelector(".slider");
+const arrowSlider = document.querySelectorAll(".arrow-btn");
+
 function setLocationOfItemOnCenterBlock(block, item) {
   item.style.top = `${(block.offsetHeight - item.offsetHeight) / 2 - 6}px`;
 }
 
-const sliderBlock = document.querySelector(".slider");
-const arrowSlider = document.querySelectorAll(".arrow-btn");
+function drawArrowFromSlider() {
+  setLocationOfItemOnCenterBlock(sliderBlock, arrowSlider[0]);
+  setLocationOfItemOnCenterBlock(sliderBlock, arrowSlider[1]);
+  arrowSlider[0].style.left = `${sliderBlock.offsetWidth / 2 - 470}px`;
+  arrowSlider[1].style.left = `${sliderBlock.offsetWidth / 2 -
+    arrowSlider[1].offsetWidth +
+    470}px`;
+}
 
-setLocationOfItemOnCenterBlock(sliderBlock, arrowSlider[0]);
-setLocationOfItemOnCenterBlock(sliderBlock, arrowSlider[1]);
-console.log(arrowSlider[0].offsetWidth)
-arrowSlider[0].style.left = `${sliderBlock.offsetWidth / 2 - 470}px`;
-arrowSlider[1].style.left = `${sliderBlock.offsetWidth / 2 - arrowSlider[1].offsetWidth + 470}px`;
+drawArrowFromSlider();
+window.addEventListener("resize", drawArrowFromSlider);

@@ -228,7 +228,7 @@ a {
   width: 16px;
 
   transform: rotate(180deg);
-  transition: 0.3s ease;
+  transition: filter 0.3s ease;
 
   border: none;
 }
