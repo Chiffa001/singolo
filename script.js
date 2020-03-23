@@ -183,20 +183,95 @@ function submitForm(e) {
 // slider
 
 const sliderBlock = document.querySelector(".slider");
-const arrowSlider = document.querySelectorAll(".arrow-btn");
+const arrowsSlider = document.querySelectorAll(".arrow-btn");
 
 function setLocationOfItemOnCenterBlock(block, item) {
   item.style.top = `${(block.offsetHeight - item.offsetHeight) / 2 - 6}px`;
 }
 
 function drawArrowFromSlider() {
-  setLocationOfItemOnCenterBlock(sliderBlock, arrowSlider[0]);
-  setLocationOfItemOnCenterBlock(sliderBlock, arrowSlider[1]);
-  arrowSlider[0].style.left = `${sliderBlock.offsetWidth / 2 - 470}px`;
-  arrowSlider[1].style.left = `${sliderBlock.offsetWidth / 2 -
-    arrowSlider[1].offsetWidth +
+  setLocationOfItemOnCenterBlock(sliderBlock, arrowsSlider[0]);
+  setLocationOfItemOnCenterBlock(sliderBlock, arrowsSlider[1]);
+  arrowsSlider[0].style.left = `${sliderBlock.offsetWidth / 2 - 470}px`;
+  arrowsSlider[1].style.left = `${sliderBlock.offsetWidth / 2 -
+    arrowsSlider[1].offsetWidth +
     470}px`;
 }
 
 drawArrowFromSlider();
 window.addEventListener("resize", drawArrowFromSlider);
+
+function mutualReplacementOfSlides(activeEl, inactiveEl) {
+  inactiveEl.style.left = "0px";
+  inactiveEl.classList.remove("slide--move");
+  inactiveEl.classList.add("slide--active");
+  activeEl.classList.remove("slide--move");
+  activeEl.classList.remove("slide--active");
+  activeEl.classList.add("visually-hidden");
+}
+
+function preparingToMove(activeEl, inactiveEl) {
+  inactiveEl.classList.remove("visually-hidden");
+  inactiveEl.classList.add("slide--move");
+  activeEl.classList.add("slide--move");
+}
+
+function moveSlide(activeEl, inactiveEl, direction = "left") {
+
+  function moveLeftInner() {
+    inactiveEl.style.left = `${sliderBlock.offsetWidth}px`;
+
+    const moveIntervalLeft = setInterval(() => {
+      inactiveEl.style.left =
+        inactiveEl.style.left.slice(0, -2) - 10 + "px";
+  
+      activeEl.style.left =
+        activeEl.style.left.slice(0, -2) - 10 + "px";
+  
+      if (inactiveEl.style.left.slice(0, -2) <= 10) {
+        clearInterval(moveIntervalLeft);
+        mutualReplacementOfSlides(activeEl, inactiveEl);
+      }
+    }, 1);
+  }
+
+  function moveRightInner() {
+    inactiveEl.style.left = `-${sliderBlock.offsetWidth}px`;
+
+    const moveIntervalRight = setInterval(() => {
+      inactiveEl.style.left =
+        +inactiveEl.style.left.slice(0, -2) + 10 + "px";
+  
+      activeEl.style.left =
+        +activeEl.style.left.slice(0, -2) + 10 + "px";
+  
+      if (inactiveEl.style.left.slice(0, -2) > -10) {
+        clearInterval(moveIntervalRight);
+        mutualReplacementOfSlides(activeEl, inactiveEl);
+      }
+    }, 1);
+  }
+
+  if (direction === "right") moveRightInner();
+  else moveLeftInner();
+
+}
+
+function moveLeft() {
+  const slideInactive = document.querySelector(".slide.visually-hidden");
+  const slideActive = document.querySelector(".slide.slide--active");
+
+  preparingToMove(slideActive, slideInactive);
+  moveSlide(slideActive, slideInactive, "left");
+}
+
+function moveRight() {
+  const slideInactive = document.querySelector(".slide.visually-hidden");
+  const slideActive = document.querySelector(".slide.slide--active");
+
+  preparingToMove(slideActive, slideInactive);
+  moveSlide(slideActive, slideInactive, "right");
+}
+
+arrowsSlider[0].addEventListener("click", moveLeft);
+arrowsSlider[1].addEventListener("click", moveRight);
