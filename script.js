@@ -123,14 +123,14 @@ function interactionWithImages(e) {
 // modal
 const modal = document.querySelector(".modal");
 const modalWindow = document.querySelector(".modal__window");
-setLocationOfItem(modalWindow);
+setLocationOfItemOnCenterWindow(modalWindow);
 window.addEventListener("resize", resizeWindow);
 
 function resizeWindow() {
-  setLocationOfItem(modalWindow);
+  setLocationOfItemOnCenterWindow(modalWindow);
 }
 
-function setLocationOfItem(el) {
+function setLocationOfItemOnCenterWindow(el) {
   el.style.top = (window.innerHeight - el.clientHeight) / 2 + "px";
   el.style.left = (window.innerWidth - el.clientWidth) / 2 + "px";
 }
@@ -179,3 +179,18 @@ function submitForm(e) {
   const modalBtn = document.querySelector(".modal__btn");
   modalBtn.addEventListener("click", closeModal);
 }
+
+// slider
+
+function setLocationOfItemOnCenterBlock(block, item) {
+  item.style.top = `${(block.offsetHeight - item.offsetHeight) / 2 - 6}px`;
+}
+
+const sliderBlock = document.querySelector(".slider");
+const arrowSlider = document.querySelectorAll(".arrow-btn");
+
+setLocationOfItemOnCenterBlock(sliderBlock, arrowSlider[0]);
+setLocationOfItemOnCenterBlock(sliderBlock, arrowSlider[1]);
+console.log(arrowSlider[0].offsetWidth)
+arrowSlider[0].style.left = `${sliderBlock.offsetWidth / 2 - 470}px`;
+arrowSlider[1].style.left = `${sliderBlock.offsetWidth / 2 - arrowSlider[1].offsetWidth + 470}px`;
