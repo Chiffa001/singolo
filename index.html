@@ -388,14 +388,25 @@
           </p>
           <div class="container">
             <form class="feedback__form" action="#" method="post">
-              <input type="text" placeholder="Name (Required)" required /><br />
               <input
+                class="feedback__name"
+                type="text"
+                placeholder="Name (Required)"
+                required
+              /><br />
+              <input
+                class="feedback__email"
                 type="email"
                 placeholder="Email (Required)"
                 required
               /><br />
-              <input type="text" placeholder="Subject" /><br />
+              <input
+                class="feedback__subject"
+                type="text"
+                placeholder="Subject"
+              /><br />
               <textarea
+                class="feedback__description"
                 placeholder="Describe your project in detail..."
               ></textarea>
               <input class="feedback__btn" type="submit" value="submit" />
@@ -466,6 +477,14 @@
         </div>
       </div>
     </footer>
+    <div class="modal visually-hidden">
+      <div class="modal__window">
+        <p class="modal__answer">The letter was sent</p>
+        <p class="modal__theme"></p>
+        <p class="modal__description">Без описания</p>
+        <button class="modal__btn btn" type="button">ok</button>
+      </div>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>

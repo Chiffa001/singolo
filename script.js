@@ -119,3 +119,62 @@ function interactionWithImages(e) {
     else current.classList.toggle("portfolio__image--active");
   }
 }
+
+// modal
+const modal = document.querySelector(".modal");
+const modalWindow = document.querySelector(".modal__window");
+setLocationOfItem(modalWindow);
+window.addEventListener("resize", resizeWindow);
+
+function resizeWindow() {
+  setLocationOfItem(modalWindow);
+}
+
+function setLocationOfItem(el) {
+  el.style.top = (window.innerHeight - el.clientHeight) / 2 + "px";
+  el.style.left = (window.innerWidth - el.clientWidth) / 2 + "px";
+}
+
+const feedbackBtn = document.querySelector(".feedback__btn");
+feedbackBtn.addEventListener("click", submitForm);
+
+function getModalMessageObject() {
+  return {
+    subject: document.querySelector(".feedback__subject").value,
+    description: document.querySelector(".feedback__description").value
+  };
+}
+
+function setModalFields() {
+  const modalTextTheme = document.querySelector(".modal__theme");
+  const modalTextDescription = document.querySelector(".modal__description");
+  const { subject, description } = getModalMessageObject();
+
+  // console.log(subject, description)
+  modalTextTheme.innerHTML =
+    subject.trim() === "" ? "No subject" : `Subject: ${subject.trim()}`;
+  modalTextDescription.innerHTML =
+    description.trim() === ""
+      ? "No description"
+      : `Description: ${description.trim()}`;
+}
+
+function submitForm(e) {
+  const name = document.querySelector(".feedback__name");
+  const email = document.querySelector(".feedback__email");
+  if (!name.validity.valid) return;
+  if (!email.validity.valid) return;
+  e.preventDefault();
+
+  modal.classList.remove("visually-hidden");
+
+  setModalFields();
+
+  function closeModal() {
+    modal.classList.add("visually-hidden");
+    modalBtn.removeEventListener("click", closeModal);
+  }
+
+  const modalBtn = document.querySelector(".modal__btn");
+  modalBtn.addEventListener("click", closeModal);
+}

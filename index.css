@@ -96,6 +96,8 @@ a {
 
 /* General */
 .section {
+  min-width: 1020px;
+
   border-bottom-width: 6px;
   border-bottom-style: solid;
 }
@@ -128,6 +130,7 @@ a {
   flex-direction: column;
 
   width: 100%;
+  min-width: 1020px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -200,19 +203,14 @@ a {
 }
 
 /* slider */
-/* .slider {
-  height: 600px;
-
-  padding-top: 53px;
-  border-bottom: 6px solid #ea676b;
-
-  background-color: var(--main-orange);
-} */
+.slider {
+  min-width: 1020px;
+}
 
 .slide {
   height: 600px;
   padding-top: 53px;
-  border-bottom: 6px solid transparent;  
+  border-bottom: 6px solid transparent;
 }
 
 .slide-1 {
@@ -221,13 +219,13 @@ a {
 }
 
 .slide-2 {
-  background-color: #648BF0;
+  background-color: #648bf0;
 }
 
 .arrow-btn {
   height: 27px;
   width: 16px;
-  
+
   transform: rotate(180deg);
   transition: 0.3s ease;
 
@@ -271,7 +269,7 @@ a {
   height: 240px;
   width: 483px;
 
-  background: url("./assets/images/phone-horizontal.png");  
+  background: url("./assets/images/phone-horizontal.png");
 }
 
 .slider__phone--vertical {
@@ -295,13 +293,13 @@ a {
   height: 513px;
   width: 255px;
 
-  background: url("./assets/images/phone-vertical-2.png");  
+  background: url("./assets/images/phone-vertical-2.png");
 }
 
 .slider__background {
   background: url("./assets/images/phone-vertical-display.png") no-repeat;
 
-  position: absolute;  
+  position: absolute;
 }
 
 .slide-1 .slider__background {
@@ -475,13 +473,13 @@ a {
   overflow: hidden;
 }
 
-.portfolio__image {  
-  margin-bottom: 20px;    
+.portfolio__image {
+  margin-bottom: 20px;
 }
 
 .portfolio__image--active {
-  outline: 5px solid #F06C64;  
-  outline-offset: -5px; 
+  outline: 5px solid #f06c64;
+  outline-offset: -5px;
 }
 
 /* About */
@@ -691,6 +689,8 @@ a {
 /* footer */
 
 .main-footer {
+  min-width: 1020px;
+
   background-color: #2d303a;
 }
 
@@ -704,4 +704,50 @@ a {
 
 .main-footer__socials {
   margin-top: 22px;
+}
+
+/* modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  min-width: 1020px;
+
+  z-index: 20;
+  background-color: rgba(87, 87, 87, 0.856);
+}
+
+.modal__window {
+  position: absolute;
+
+  display: flex;
+  flex-flow: column;
+
+  width: 500px;
+  padding: 15px;
+  border-radius: 10px;
+
+  font-size: 1.2rem;
+
+  background-color: rgba(223, 180, 179, 0.63);
+}
+
+.modal__btn {
+  margin-top: 20px;
+  padding: 5px 0;
+
+  border: none;
+  border-radius: 10px;
+
+  background-color: rgb(245, 134, 114);
+  font: inherit;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.modal__btn:hover {
+  background-color: rgb(248, 120, 97);
 }
