@@ -172,6 +172,7 @@ function submitForm(e) {
 
   function closeModal() {
     modal.classList.add("visually-hidden");
+    document.querySelector(".feedback__form").reset();
     modalBtn.removeEventListener("click", closeModal);
   }
 
