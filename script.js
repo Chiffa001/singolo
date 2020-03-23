@@ -5,16 +5,16 @@ const header = document.querySelector(".main-header");
 nav.addEventListener("click", scrollPage);
 document.addEventListener("scroll", pageScrollingIdentification);
 
-function disableNavigationItems() {
-  navigationItems.forEach(el =>
-    el.classList.remove("main-navigation__item--active")
+function disableListItems(listItems, className) {
+  listItems.forEach(el =>
+    el.classList.remove(`${className}--active`)
   );
 }
 
-function changeActiveItemToHeader(el) {
-  if (Array.prototype.includes.call(navigationItems, el)) {
-    disableNavigationItems();
-    el.classList.add("main-navigation__item--active");
+function changeActiveItemToList(el, listItems, className) {
+  if (Array.prototype.includes.call(listItems, el)) {
+    disableListItems(listItems, className);
+    el.classList.add(`${className}--active`);
   }
 }
 
@@ -28,7 +28,7 @@ function scrollPage(e) {
     window.scrollTo({
       top: el.offsetTop - header.scrollHeight
     });
-    changeActiveItemToHeader(current.parentNode);
+    changeActiveItemToList(current.parentNode, navigationItems, "main-navigation__item");
   }
 }
 
@@ -44,7 +44,7 @@ function getSizeBlocks(nameClass) {
 
 function pageScrollingIdentification() {
   let currentScrollValue = window.pageYOffset;
-  disableNavigationItems();
+  disableListItems(navigationItems, "main-navigation__item");
 
   let sizeBlocks = [];
   try {
@@ -74,4 +74,31 @@ screensPhones.forEach(screen => screen.addEventListener("click", toggleScreen));
 function toggleScreen(e) {
   const current = e.target;
   current.classList.toggle("slider__background--hidden");
+}
+
+// portfolio tabs
+
+const portfolioFilter = document.querySelector(".portfolio__filter");
+const portfolioButtons = document.querySelectorAll(".filter__btn");
+
+portfolioFilter.addEventListener("click", portfolioItemsSort)
+
+function portfolioItemsSort(e) {
+  const current = e.target;
+  if (current.type === "button") {
+    if (current === document.querySelector(".filter__btn--active")) return;
+    const wrapperImages = document.querySelector(".portfolio__images");
+    const arrImages = document.querySelectorAll(".portfolio__image");
+
+    changeActiveItemToList(current, portfolioButtons, "filter__btn");
+    wrapperImages.append(...sortImages(arrImages));
+  }
+}
+
+function sortImages(images) {
+  return shuffle(Array.from(images));
+}
+
+function shuffle(arr) {
+  return arr.sort(() => Math.random() - 0.5);
 }
