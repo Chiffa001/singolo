@@ -6,9 +6,7 @@ nav.addEventListener("click", scrollPage);
 document.addEventListener("scroll", pageScrollingIdentification);
 
 function disableListItems(listItems, className) {
-  listItems.forEach(el =>
-    el.classList.remove(`${className}--active`)
-  );
+  listItems.forEach(el => el.classList.remove(`${className}--active`));
 }
 
 function changeActiveItemToList(el, listItems, className) {
@@ -28,7 +26,11 @@ function scrollPage(e) {
     window.scrollTo({
       top: el.offsetTop - header.scrollHeight
     });
-    changeActiveItemToList(current.parentNode, navigationItems, "main-navigation__item");
+    changeActiveItemToList(
+      current.parentNode,
+      navigationItems,
+      "main-navigation__item"
+    );
   }
 }
 
@@ -81,7 +83,7 @@ function toggleScreen(e) {
 const portfolioFilter = document.querySelector(".portfolio__filter");
 const portfolioButtons = document.querySelectorAll(".filter__btn");
 
-portfolioFilter.addEventListener("click", portfolioItemsSort)
+portfolioFilter.addEventListener("click", portfolioItemsSort);
 
 function portfolioItemsSort(e) {
   const current = e.target;
@@ -101,4 +103,19 @@ function sortImages(images) {
 
 function shuffle(arr) {
   return arr.sort(() => Math.random() - 0.5);
+}
+
+// interaction with portfolio images
+
+const wrapperImages = document.querySelector(".portfolio__images");
+wrapperImages.addEventListener("click", interactionWithImages);
+
+function interactionWithImages(e) {
+  const current = e.target;
+  if (current.nodeName === "IMG") {
+    const images = document.querySelectorAll(".portfolio__image");
+    if (!current.classList.contains("portfolio__image--active"))
+      changeActiveItemToList(current, images, "portfolio__image");
+    else current.classList.toggle("portfolio__image--active");
+  }
 }

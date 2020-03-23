@@ -475,8 +475,13 @@ a {
   overflow: hidden;
 }
 
-.portfolio__image {
-  margin-bottom: 20px;
+.portfolio__image {  
+  margin-bottom: 20px;    
+}
+
+.portfolio__image--active {
+  outline: 5px solid #F06C64;  
+  outline-offset: -5px; 
 }
 
 /* About */
