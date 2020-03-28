@@ -24,7 +24,7 @@ function scrollPage(e) {
       current.href.slice(current.href.indexOf("#"))
     );
     window.scrollTo({
-      top: el.offsetTop - header.scrollHeight
+      top: el.offsetTop - header.scrollHeight - 6
     });
     changeActiveItemToList(
       current.parentNode,
@@ -190,12 +190,13 @@ function setLocationOfItemOnCenterBlock(block, item) {
 }
 
 function drawArrowFromSlider() {
+  const wrapperInActiveSlide = document.querySelector(".slide--active .wrapper");
   setLocationOfItemOnCenterBlock(sliderBlock, arrowsSlider[0]);
   setLocationOfItemOnCenterBlock(sliderBlock, arrowsSlider[1]);
-  arrowsSlider[0].style.left = `${sliderBlock.offsetWidth / 2 - 470}px`;
+  arrowsSlider[0].style.left = `${(sliderBlock.offsetWidth - (wrapperInActiveSlide.offsetWidth - 20)) / 2}px`;
   arrowsSlider[1].style.left = `${sliderBlock.offsetWidth / 2 -
     arrowsSlider[1].offsetWidth +
-    470}px`;
+    (wrapperInActiveSlide.offsetWidth / 2 - 10)}px`;
 }
 
 drawArrowFromSlider();

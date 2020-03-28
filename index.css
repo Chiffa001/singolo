@@ -40,6 +40,11 @@
   --orange-light: #f06c64;
   --orange-dark: #d6564f;
   --orange-font: #f0d8d9;
+
+  --tablet-width: 768px;
+  --tablet-wrapper-width: 712px;
+  --mobile-width: 375px;
+  --mobile-wrapper-width: 356px;
 }
 
 /* content styles */
@@ -70,16 +75,15 @@ a {
   color: inherit;
 }
 
-.wrapper {
-  width: 960px;
-  padding: 0 10px;
-  margin: 0 auto;
-}
-
 .container {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+}
+
+.wrapper {
+  padding: 0 10px;
+  margin: 0 auto;
 }
 
 .vertical-center {
@@ -96,8 +100,6 @@ a {
 
 /* General */
 .section {
-  min-width: 1020px;
-
   border-bottom-width: 6px;
   border-bottom-style: solid;
 }
@@ -124,13 +126,32 @@ a {
   line-height: 30px;
 }
 
+@media (min-width: 1020px) {
+  .wrapper {
+    width: 960px;
+  }
+
+  .section {
+    min-width: 1020px;
+  }
+}
+
+@media (max-width: 1019px) {
+  .wrapper {
+    width: var(--tablet-wrapper-width);
+  }
+
+  .section {
+    min-width: var(--tablet-width);
+  }
+}
+
 /* main-header */
 .main-header {
   display: flex;
   flex-direction: column;
 
   width: 100%;
-  min-width: 1020px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -202,17 +223,31 @@ a {
   color: var(--main-orange);
 }
 
+@media (min-width: 1020px) {
+  .main-header {
+    min-width: 1020px;
+  }
+}
+
+@media (max-width: 1019px) {
+  .main-header {
+    min-width: var(--tablet-width);
+  }
+}
+
 /* slider */
 .slider {
-  min-width: 1020px;
-  height: 600px;
   position: relative;
   overflow: hidden;
+
+  min-width: 1020px;
+  height: 600px;
 }
 
 .slide {
   border-bottom: 6px solid transparent;
   width: 100%;
+  min-height: 452px;
 }
 
 .slide-1 {
@@ -232,6 +267,13 @@ a {
   position: absolute;
   z-index: 4;
   top: 0;
+}
+
+@media (max-width: 1019px) {
+  .slider {
+    min-width: var(--tablet-width);   
+    height: 452px; 
+  }
 }
 
 .arrow-btn {
@@ -276,34 +318,19 @@ a {
 }
 
 .slider__phone--horizontal {
-  height: 240px;
-  width: 483px;
-
-  background: url("./assets/images/phone-horizontal.png");
+  background-image: url("./assets/images/phone-horizontal.png");
 }
 
 .slider__phone--vertical {
-  width: 240px;
-  height: 483px;
-
-  margin-right: 73px;
-
-  background: url("./assets/images/phone-vertical.png");
+  background-image: url("./assets/images/phone-vertical.png");
 }
 
 .slider__phone--behind {
-  height: 314px;
-  width: 156px;
-
-  background: url("./assets/images/phone-vertical.png");
-  background-size: contain;
+  background-image: url("./assets/images/phone-vertical.png");
 }
 
 .slider__phone--front {
-  height: 513px;
-  width: 255px;
-
-  background: url("./assets/images/phone-vertical-2.png");
+  background-image: url("./assets/images/phone-vertical-2.png");
 }
 
 .slider__background {
@@ -340,6 +367,75 @@ a {
 
 .slider__background--hidden {
   background-image: none !important;
+}
+
+@media (min-width: 1020px) {
+  .slider__phone--horizontal {
+    height: 240px;
+    width: 483px;    
+  }
+
+  .slider__phone--vertical {
+    width: 240px;
+    height: 483px;
+
+    margin-right: 73px;    
+  }
+
+  .slider__phone--behind {
+    height: 314px;
+    width: 156px;    
+  }
+
+  .slider__phone--front {
+    height: 513px;
+    width: 255px;    
+  }
+}
+
+@media (max-width: 1019px) {
+  .slider__phone--horizontal {
+    height: 181px;
+    width: 364px;    
+  }
+
+  .slider__phone--vertical {
+    width: 181px;
+    height: 364px;
+
+    margin-right: 55px;
+  }
+
+  .slider__phone--behind {
+    height: 314px;
+    width: 156px;    
+  }
+
+  .slider__phone--front {
+    height: 410px;
+    width: 210px;    
+  }
+
+  .slide-2 .slider__background {
+    width: 161px;
+    height: 280px;
+
+    top: 55px;
+    left: 11px;
+  }
+
+  .slide-1 .slider__background {
+    width: 145px;
+    height: 339px;  
+  
+    top: 48px;
+    left: 9px;
+  }
+  
+  .slide-1 .slider__background--horizontal {  
+    top: -88px;
+    left: 56px;
+  }
 }
 
 /* services */
@@ -504,8 +600,9 @@ a {
   margin-top: 44px;
 }
 
+/* меняй как никогда не менял, раньше было nowrap */
 .people__list {
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .people__item {
@@ -699,8 +796,6 @@ a {
 /* footer */
 
 .main-footer {
-  min-width: 1020px;
-
   background-color: #2d303a;
 }
 
@@ -714,6 +809,20 @@ a {
 
 .main-footer__socials {
   margin-top: 22px;
+}
+
+@media all and (min-width: 1020px) {
+  .main-footer {
+    min-width: 1020px;
+  }
+}
+
+@media all and (min-width: var(--tablet-width)) and (max-width: 1019px) {
+  .wrapper {
+    width: var(--tablet-width);
+    /* margin: 0 auto;
+    padding: 0 12px; */
+  }
 }
 
 /* modal */
