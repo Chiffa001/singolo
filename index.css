@@ -327,6 +327,7 @@ a {
 
 .slider__phone--behind {
   background-image: url("./assets/images/phone-vertical.png");
+  opacity: 0.5;
 }
 
 .slider__phone--front {
@@ -665,7 +666,8 @@ a {
 
 /* feedback */
 .feedback {
-  padding: 60px 0 9px 0;
+  /* 9 */
+  padding: 60px 0 40px 0; 
 
   background-color: var(--orange-light);
 
@@ -688,6 +690,12 @@ a {
 
 .feedback__form {
   flex: 0 0 620px;
+}
+
+@media (max-width: 1019px) {
+  .feedback__form {
+    flex: 0 0 442px;
+  }
 }
 
 .feedback__form input,
@@ -738,6 +746,12 @@ a {
   color: var(--orange-font);
 
   line-height: 21.56px;
+}
+
+@media (max-width: 1019px) {
+  .contact-info {
+    flex: 0 0 221px;
+  }
 }
 
 .contact-info__title {
