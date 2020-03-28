@@ -600,20 +600,29 @@ a {
   margin-top: 44px;
 }
 
-/* меняй как никогда не менял, раньше было nowrap */
 .people__list {
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .people__item {
-  flex: 0 0 300px;
+  flex: 0 1 300px;
+}
+
+@media (max-width: 1019px) {
+  .people__item {
+    flex: 0 1 219px;
+  }
+
+  .person__image {
+    width: 219px;
+  }
 }
 
 .person__name {
   margin-top: 15px;
 
   height: 18px;
-  width: 300px;
+  max-width: 300px;
   overflow: hidden;
 
   font-size: 18px;
