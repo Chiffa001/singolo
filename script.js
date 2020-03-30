@@ -186,17 +186,21 @@ const sliderBlock = document.querySelector(".slider");
 const arrowsSlider = document.querySelectorAll(".arrow-btn");
 
 function setLocationOfItemOnCenterBlock(block, item) {
-  item.style.top = `${(block.offsetHeight - item.offsetHeight) / 2 }px`;
+  item.style.top = `${(block.offsetHeight - item.offsetHeight) / 2}px`;
 }
 
 function drawArrowFromSlider() {
-  const wrapperInActiveSlide = document.querySelector(".slide--active .wrapper");
+  const wrapperInActiveSlide = document.querySelector(
+    ".slide--active .wrapper"
+  );
   setLocationOfItemOnCenterBlock(sliderBlock, arrowsSlider[0]);
   setLocationOfItemOnCenterBlock(sliderBlock, arrowsSlider[1]);
-  arrowsSlider[0].style.left = `${(sliderBlock.offsetWidth - (wrapperInActiveSlide.offsetWidth - 8)) / 2}px`;
+  arrowsSlider[0].style.left = `${(sliderBlock.offsetWidth -
+    (wrapperInActiveSlide.offsetWidth - 8)) /
+    2}px`;
   arrowsSlider[1].style.left = `${sliderBlock.offsetWidth / 2 -
     arrowsSlider[1].offsetWidth +
-    (wrapperInActiveSlide.offsetWidth / 2)}px`;
+    wrapperInActiveSlide.offsetWidth / 2}px`;
 }
 
 drawArrowFromSlider();
@@ -218,17 +222,14 @@ function preparingToMove(activeEl, inactiveEl) {
 }
 
 function moveSlide(activeEl, inactiveEl, direction = "left") {
-
   function moveLeftInner() {
     inactiveEl.style.left = `${sliderBlock.offsetWidth}px`;
 
     const moveIntervalLeft = setInterval(() => {
-      inactiveEl.style.left =
-        inactiveEl.style.left.slice(0, -2) - 10 + "px";
-  
-      activeEl.style.left =
-        activeEl.style.left.slice(0, -2) - 10 + "px";
-  
+      inactiveEl.style.left = inactiveEl.style.left.slice(0, -2) - 10 + "px";
+
+      activeEl.style.left = activeEl.style.left.slice(0, -2) - 10 + "px";
+
       if (inactiveEl.style.left.slice(0, -2) <= 10) {
         clearInterval(moveIntervalLeft);
         mutualReplacementOfSlides(activeEl, inactiveEl);
@@ -240,12 +241,10 @@ function moveSlide(activeEl, inactiveEl, direction = "left") {
     inactiveEl.style.left = `-${sliderBlock.offsetWidth}px`;
 
     const moveIntervalRight = setInterval(() => {
-      inactiveEl.style.left =
-        +inactiveEl.style.left.slice(0, -2) + 10 + "px";
-  
-      activeEl.style.left =
-        +activeEl.style.left.slice(0, -2) + 10 + "px";
-  
+      inactiveEl.style.left = +inactiveEl.style.left.slice(0, -2) + 10 + "px";
+
+      activeEl.style.left = +activeEl.style.left.slice(0, -2) + 10 + "px";
+
       if (inactiveEl.style.left.slice(0, -2) > -10) {
         clearInterval(moveIntervalRight);
         mutualReplacementOfSlides(activeEl, inactiveEl);
@@ -255,7 +254,6 @@ function moveSlide(activeEl, inactiveEl, direction = "left") {
 
   if (direction === "right") moveRightInner();
   else moveLeftInner();
-
 }
 
 function moveLeft() {
@@ -276,3 +274,68 @@ function moveRight() {
 
 arrowsSlider[0].addEventListener("click", moveLeft);
 arrowsSlider[1].addEventListener("click", moveRight);
+
+// for mobile
+
+const hamburger = document.querySelector(".main-header__toggle");
+const navigationMenu = document.querySelector(".main-navigation");
+const logo = document.querySelector(".main-header__logo");
+const containerOfHeader = document.querySelector(".main-header .container");
+hamburger.addEventListener("click", toggleNavigationMenu);
+
+function toggleNavigationMenu(e) {
+  const current = e.target;
+  const visibleWidthNavigationMenu = navigationMenu.offsetWidth;
+
+  console.log(logo);
+  console.log(containerOfHeader);
+
+  if (current.classList.contains("main-header__toggle--active")) {
+    //do invisible
+    let currentLeft = 0;
+    const moveMenu = setInterval(() => {
+      navigationMenu.style.left = `${(currentLeft -= 10)}px`;
+      if (currentLeft - 10 <= -visibleWidthNavigationMenu) {
+        navigationMenu.style.left = `${-visibleWidthNavigationMenu}px`;
+        clearInterval(moveMenu);
+      }
+    }, 10);
+    containerOfHeader.prepend(logo);
+  } else {
+    // do visible
+    let currentLeft = -visibleWidthNavigationMenu;
+    const moveMenu = setInterval(() => {
+      navigationMenu.style.left = `${(currentLeft += 10)}px`;
+      if (currentLeft + 10 >= 0) {
+        navigationMenu.style.left = `0px`;
+        clearInterval(moveMenu);
+      }
+    });
+    navigationMenu.prepend(logo);
+  }
+  current.classList.toggle("main-header__toggle--active");
+}
+
+function showHamburger() {
+  let currentWidthWindows = document.body.scrollWidth;
+
+  if (currentWidthWindows <= 767) {
+    if (hamburger.classList.contains("main-header__toggle--hidden"))
+      hamburger.classList.remove("main-header__toggle--hidden");
+
+    if (hamburger.classList.contains("main-header__toggle--active"))
+      hamburger.classList.remove("main-header__toggle--active");
+
+  } else {
+    if (!hamburger.classList.contains("main-header__toggle--hidden")) {
+      hamburger.classList.add("main-header__toggle--hidden");
+    }    
+
+    navigationMenu.removeAttribute("style");
+    containerOfHeader.prepend(logo);
+  }
+}
+
+showHamburger();
+
+window.addEventListener("resize", showHamburger);
