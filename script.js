@@ -186,17 +186,17 @@ const sliderBlock = document.querySelector(".slider");
 const arrowsSlider = document.querySelectorAll(".arrow-btn");
 
 function setLocationOfItemOnCenterBlock(block, item) {
-  item.style.top = `${(block.offsetHeight - item.offsetHeight) / 2 - 6}px`;
+  item.style.top = `${(block.offsetHeight - item.offsetHeight) / 2 }px`;
 }
 
 function drawArrowFromSlider() {
   const wrapperInActiveSlide = document.querySelector(".slide--active .wrapper");
   setLocationOfItemOnCenterBlock(sliderBlock, arrowsSlider[0]);
   setLocationOfItemOnCenterBlock(sliderBlock, arrowsSlider[1]);
-  arrowsSlider[0].style.left = `${(sliderBlock.offsetWidth - (wrapperInActiveSlide.offsetWidth - 20)) / 2}px`;
+  arrowsSlider[0].style.left = `${(sliderBlock.offsetWidth - (wrapperInActiveSlide.offsetWidth - 8)) / 2}px`;
   arrowsSlider[1].style.left = `${sliderBlock.offsetWidth / 2 -
     arrowsSlider[1].offsetWidth +
-    (wrapperInActiveSlide.offsetWidth / 2 - 10)}px`;
+    (wrapperInActiveSlide.offsetWidth / 2)}px`;
 }
 
 drawArrowFromSlider();
