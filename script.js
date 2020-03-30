@@ -195,12 +195,15 @@ function drawArrowFromSlider() {
   );
   setLocationOfItemOnCenterBlock(sliderBlock, arrowsSlider[0]);
   setLocationOfItemOnCenterBlock(sliderBlock, arrowsSlider[1]);
-  arrowsSlider[0].style.left = `${(sliderBlock.offsetWidth -
-    (wrapperInActiveSlide.offsetWidth - 8)) /
-    2}px`;
-  arrowsSlider[1].style.left = `${sliderBlock.offsetWidth / 2 -
-    arrowsSlider[1].offsetWidth +
-    wrapperInActiveSlide.offsetWidth / 2}px`;
+
+  const leftArrowX = (sliderBlock.offsetWidth - (wrapperInActiveSlide.offsetWidth - 8)) / 2;
+  const rightArrowX = sliderBlock.offsetWidth / 2 -
+  arrowsSlider[1].offsetWidth + wrapperInActiveSlide.offsetWidth / 2;
+
+  const isMobileScreen = document.body.scrollWidth <= 767;
+
+  arrowsSlider[0].style.left = `${isMobileScreen ? leftArrowX - 10 : leftArrowX}px`;
+  arrowsSlider[1].style.left = `${isMobileScreen ? rightArrowX + 10 : rightArrowX}px`;
 }
 
 drawArrowFromSlider();
