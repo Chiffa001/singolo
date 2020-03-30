@@ -19,12 +19,14 @@ function changeActiveItemToList(el, listItems, className) {
 function scrollPage(e) {
   e.preventDefault();
   const current = e.target;
+
   if (current.href) {
     const el = document.querySelector(
       current.href.slice(current.href.indexOf("#"))
     );
+
     window.scrollTo({
-      top: el.offsetTop - header.scrollHeight - 6
+      top: el.offsetTop - header.offsetHeight
     });
     changeActiveItemToList(
       current.parentNode,
@@ -35,7 +37,7 @@ function scrollPage(e) {
 }
 
 function getSizeBlocks(nameClass) {
-  const sections = document.querySelectorAll(".block");
+  const sections = document.querySelectorAll(nameClass);
   if (sections.length === 0) throw new Error(`element ${nameClass} not found`);
   const sizeBlocks = [];
   for (const iterator of sections) {
@@ -58,8 +60,9 @@ function pageScrollingIdentification() {
   let currentSizeScrollingBlocks = 0;
   for (let index = 0; index < sizeBlocks.length; index++) {
     currentSizeScrollingBlocks += sizeBlocks[index];
+    const divider = document.body.offsetWidth <= 767 ? 4 : 2;
     if (
-      currentScrollValue + window.screen.availHeight / 2 - header.scrollHeight <
+      currentScrollValue + window.screen.availHeight / divider - header.offsetHeight <
       currentSizeScrollingBlocks
     ) {
       navigationItems[index].classList.add("main-navigation__item--active");
@@ -149,8 +152,7 @@ function setModalFields() {
   const modalTextTheme = document.querySelector(".modal__theme");
   const modalTextDescription = document.querySelector(".modal__description");
   const { subject, description } = getModalMessageObject();
-
-  // console.log(subject, description)
+  
   modalTextTheme.innerHTML =
     subject.trim() === "" ? "No subject" : `Subject: ${subject.trim()}`;
   modalTextDescription.innerHTML =
@@ -289,9 +291,6 @@ hamburger.addEventListener("click", toggleNavigationMenu);
 function toggleNavigationMenu(e) {
   const current = e.target;
   const visibleWidthNavigationMenu = navigationMenu.offsetWidth;
-
-  console.log(logo);
-  console.log(containerOfHeader);
 
   if (current.classList.contains("main-header__toggle--active")) {
     //do invisible
