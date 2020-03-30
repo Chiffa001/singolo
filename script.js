@@ -152,7 +152,7 @@ function setModalFields() {
   const modalTextTheme = document.querySelector(".modal__theme");
   const modalTextDescription = document.querySelector(".modal__description");
   const { subject, description } = getModalMessageObject();
-  
+
   modalTextTheme.innerHTML =
     subject.trim() === "" ? "No subject" : `Subject: ${subject.trim()}`;
   modalTextDescription.innerHTML =
@@ -204,8 +204,8 @@ function drawArrowFromSlider() {
 
   const isMobileScreen = document.body.scrollWidth <= 767;
 
-  arrowsSlider[0].style.left = `${isMobileScreen ? leftArrowX - 10 : leftArrowX}px`;
-  arrowsSlider[1].style.left = `${isMobileScreen ? rightArrowX + 10 : rightArrowX}px`;
+  arrowsSlider[0].style.left = `${isMobileScreen ? leftArrowX - 25 : leftArrowX}px`;
+  arrowsSlider[1].style.left = `${isMobileScreen ? rightArrowX + 20 : rightArrowX}px`;
 }
 
 drawArrowFromSlider();
