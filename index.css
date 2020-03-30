@@ -459,18 +459,29 @@ a {
   background-color: #f2f2f2;
 }
 
-@media (max-width: 1019px) {
-  .services {
-    padding-top: 40px;
-  }
-}
-
 .services__intro {
   text-align: justify;
 }
 
 .services__list {
   padding-top: 12px;
+}
+
+@media (max-width: 1019px) {
+  .services {
+    padding-top: 40px;
+    padding-bottom: 50px;
+  }
+
+  .services__list {
+    padding-top: 3px;
+
+    justify-content: start;
+  }
+
+  .services__item:nth-child(2n) {
+    margin-left: 55px;
+  }
 }
 
 /* service */
@@ -482,8 +493,15 @@ a {
   overflow: hidden;
 
   margin-top: 33px;
+
   padding-left: 80px;
   position: relative;
+}
+
+@media (max-width: 1019px) {
+  .service {
+    margin-bottom: 20px;
+  }
 }
 
 .service::before {
