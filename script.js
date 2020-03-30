@@ -202,10 +202,10 @@ function drawArrowFromSlider() {
   const rightArrowX = sliderBlock.offsetWidth / 2 -
   arrowsSlider[1].offsetWidth + wrapperInActiveSlide.offsetWidth / 2;
 
-  const isMobileScreen = document.body.scrollWidth <= 767;
+  const isMobileScreenNotMinimal = document.body.scrollWidth <= 767 && document.body.scrollWidth >= 375;
 
-  arrowsSlider[0].style.left = `${isMobileScreen ? leftArrowX - 25 : leftArrowX}px`;
-  arrowsSlider[1].style.left = `${isMobileScreen ? rightArrowX + 20 : rightArrowX}px`;
+  arrowsSlider[0].style.left = `${isMobileScreenNotMinimal ? leftArrowX - 25 : leftArrowX}px`;
+  arrowsSlider[1].style.left = `${isMobileScreenNotMinimal ? rightArrowX + 20 : rightArrowX}px`;
 }
 
 drawArrowFromSlider();
