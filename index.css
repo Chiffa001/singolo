@@ -45,7 +45,7 @@
 
   --tablet-width: 768px;
   --tablet-wrapper-width: 712px;
-  --mobile-width: 375px;
+  --mobile-width: 320px;
   --mobile-wrapper-width: 356px;
 }
 
@@ -150,7 +150,7 @@ a {
 
 @media (max-width: 767px) {
   .wrapper {
-    width: 317px;
+    width: 320px;
     padding: 0;
   }
 
@@ -200,8 +200,6 @@ a {
 
 /* hamburger */
 .main-header__toggle {
-  /* display: none; */
-
   position: absolute;
   top: 25px;
   left: 20px;
@@ -653,6 +651,8 @@ a {
   border-color: #ffffff;
 
   background-color: #f2f2f2;
+
+  min-width: 320px;
 }
 
 .services__intro {
@@ -681,10 +681,10 @@ a {
 }
 
 @media (max-width: 767px) {
-  .services {
+  .services {   
     padding-top: 25px;  
     padding-bottom: 15px;
-    margin-left: 4px;  
+    /* margin-left: 4px;   */
   }
 
   .services__intro {
@@ -1020,12 +1020,12 @@ a {
   }
 
   .people__item {
-    flex: 0 1 314px;
+    flex: 0 1 320px;
     margin-bottom: 32px;
   }
 
   .person__image {
-    width: 314px;
+    width: 320px;
   }
 
   .person__name {
@@ -1165,7 +1165,7 @@ a {
   }
 
   .feedback__form {
-    flex: 0 0 314px;
+    flex: 0 0 320px;
   }
 
   .feedback__form input,
